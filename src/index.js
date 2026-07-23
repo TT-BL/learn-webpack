@@ -1,4 +1,4 @@
-// import './style.css';  // 测试 css-loader
+import './style.css';  // 测试 css-loader
 // import {formatDate} from './utils/index.js'; 
 // import _ from 'lodash'
 
@@ -10,6 +10,14 @@
 // console.log(today);
 
 // console.log(_.head([1,2,3]));
+import { format } from './utils/math.js'
+console.log(format(1000000))
+
+import {add} from './utils/shake.js'
+console.log(add(19999,34));
+
+
+
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 

@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BuildDonePlugin = require("./plugins/build-done-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -51,6 +52,9 @@ module.exports = {
     ],
     // externals: { lodash: '_'},
     optimization: { 
+      usedExports: true,
+      // minimize: true,
+      // minimizer: [new TerserPlugin()],
       splitChunks: { 
         chunks: 'all',
         cacheGroups: {
