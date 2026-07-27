@@ -1,4 +1,5 @@
 import './style.css';  // 测试 css-loader
+
 // import {formatDate} from './utils/index.js'; 
 // import _ from 'lodash'
 
@@ -15,6 +16,10 @@ console.log(format(1000000))
 
 import {add} from './utils/shake.js'
 console.log(add(19999,34));
+console.log(add(1,2));
+
+import testA from './utils/testA.js'
+testA()
 
 
 

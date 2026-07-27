@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BuildDonePlugin = require("./plugins/build-done-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -16,7 +18,16 @@ module.exports = {
       // libraryTarget: 'umd',
       // chunkLoadingGlobal: 'webpackJsonp_my_app',
     },
+    optimization: {
+      moduleIds: 'deterministic',
+      runtimeChunk: 'single',
+    },
     mode: 'development',
+    // devtool: false, // 或 'source-map'
+    cache: {
+      type: 'filesystem',
+      cacheDirectory: path.resolve(__dirname, 'node_modules/.cache/webpack'),
+    },
     module: {
       rules: [
         {
@@ -25,6 +36,11 @@ module.exports = {
             { loader: 'style-loader' },
             { loader: 'css-loader' },
           ]
+        },
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          options: { cacheDirectory: true },
         },
         {
           test: /\.(js|jsx)$/,
@@ -53,9 +69,18 @@ module.exports = {
     // externals: { lodash: '_'},
     optimization: { 
       usedExports: true,
-      // minimize: true,
-      // minimizer: [new TerserPlugin()],
-      splitChunks: { 
+      minimize: true, //压缩代码
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true
+            }
+          }
+        }),
+        new CssMinimizerPlugin()
+      ],
+      splitChunks: {  //打包时那些单独生成一个js。大多是共用的文件
         chunks: 'all',
         cacheGroups: {
           vendors: {

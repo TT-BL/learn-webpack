@@ -12,6 +12,12 @@
 3. chunks 策略对比 async,inital,all。 cacheGroups的分组配置。minChunk---指定一个模块被多少个入口（或 chunk）引用时才抽出来。 priority:等级越高就先执行哪个
 
 # 第三阶段
+
 1. sideEffects, tree shaking. mode为production时只打包使用的代码
 2. usedExports, 对未使用的代码打包后会有提示, 只打包使用的代码
 3. minimize, 压缩代码. minimizer: [new TerserPlugin()],使用哪个压缩
+
+# 第四阶段
+
+1. cache，缓存整个模块图, 重复打包时, 只打包变化的代码，loader也可以使用cacheDirectory缓存，缓存loader层的转译
+2. minimizer下使用TerserPlugin和CssMinimizerPlugin来压缩代码，删除log输出
