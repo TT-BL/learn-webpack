@@ -14,7 +14,8 @@ module.exports = {
     },
     output: {
       filename: '[name]-[contenthash:8].js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
+      clean: true
       // library: 'my-app-[name]',
       // libraryTarget: 'umd',
       // chunkLoadingGlobal: 'webpackJsonp_my_app',
@@ -68,7 +69,7 @@ module.exports = {
     optimization: { 
       moduleIds: 'deterministic',
       runtimeChunk: 'single',
-      usedExports: true,
+      usedExports: true, //标记未使用的导入
       // minimize: true, //压缩代码
       minimizer: [
         new TerserPlugin({

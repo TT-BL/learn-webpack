@@ -28,3 +28,9 @@
 1. loader执行顺序，pitch下按顺序执行，normal下逆序执行，pitch下如果直接return，后面的loader不会继续执行。
 2. 异步loader,使用this.async()告诉webpack这是异步的loader, 异步任务执行完后, 调用callback(null, source)返回结果
 3. 构建plugin,了解plugin的钩子函数，done,emit,compile
+
+### 构建流程图
+1. 初始化配置，webpack.config.js创建，配置入口，出口，loader,plugin，可以正常打包
+2. loader从下往上执行，每个loader返回的结果会被下一个loader接收,loader是用来处理解析文件。plugin面向整个构建生命周期工作。
+3. usedExports，mode, minimize, devtool的使用
+4. splitChunks 分包策略，把公用的包单独打包，减少重复打包，减少包体积。chunks:  async,inital,all。cacheGroups的分组配置。minChunk---指定一个模块被多少个入口（或 chunk）引用时才抽出来。 priority:等级越高就先执行哪个
