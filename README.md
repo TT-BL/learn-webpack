@@ -21,3 +21,6 @@
 
 1. cache，缓存整个模块图, 重复打包时, 只打包变化的代码，loader也可以使用cacheDirectory缓存，缓存loader层的转译
 2. minimizer下使用TerserPlugin和CssMinimizerPlugin来压缩代码，删除log输出
+
+1. loader执行顺序，pitch下按顺序执行，normal下逆序执行，pitch下如果直接return，后面的loader不会继续执行。
+2. 异步loader,使用this.async()告诉webpack这是异步的loader, 异步任务执行完后, 调用callback(null, source)返回结果

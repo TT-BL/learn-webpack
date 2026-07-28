@@ -18,12 +18,8 @@ module.exports = {
       // libraryTarget: 'umd',
       // chunkLoadingGlobal: 'webpackJsonp_my_app',
     },
-    optimization: {
-      moduleIds: 'deterministic',
-      runtimeChunk: 'single',
-    },
     mode: 'development',
-    // devtool: false, // 或 'source-map'
+    devtool: false, // 或 'source-map'
     cache: {
       type: 'filesystem',
       cacheDirectory: path.resolve(__dirname, 'node_modules/.cache/webpack'),
@@ -38,16 +34,12 @@ module.exports = {
           ]
         },
         {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          options: { cacheDirectory: true },
-        },
-        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               presets: [
                 '@babel/preset-env',
                 ['@babel/preset-react', { runtime: 'automatic' }],
@@ -55,10 +47,14 @@ module.exports = {
             },
           },
         },
-        // {
-        //   test: /\.js$/,
-        //   use: path.resolve(__dirname, 'loaders/console-warn-loader.js')
-        // }
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: [
+            { loader: path.resolve(__dirname, 'loaders/file-header-loader.js') },
+            { loader: path.resolve(__dirname, 'loaders/console-warn-loader.js') }
+          ]
+        }
       ]
     },
     plugins: [
@@ -68,8 +64,10 @@ module.exports = {
     ],
     // externals: { lodash: '_'},
     optimization: { 
+      moduleIds: 'deterministic',
+      runtimeChunk: 'single',
       usedExports: true,
-      minimize: true, //压缩代码
+      // minimize: true, //压缩代码
       minimizer: [
         new TerserPlugin({
           terserOptions: {
