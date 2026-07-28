@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BuildDonePlugin = require("./plugins/build-done-plugin");
+const BuildProcessPlugin = require("./plugins/build-process-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -60,6 +61,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({ template: './public/index.html' }),
       new BuildDonePlugin(),
+      new BuildProcessPlugin(),
       // new BundleAnalyzerPlugin()
     ],
     // externals: { lodash: '_'},
