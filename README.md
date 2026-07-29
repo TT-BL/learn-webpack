@@ -13,7 +13,7 @@
 
 # 第三阶段
 
-1. sideEffects, tree shaking. mode为production时只打包使用的代码
+1. sideEffects，是否有副作用, tree shaking. mode为production时只打包使用的代码
 2. usedExports, 对未使用的代码打包后会有提示, 只打包使用的代码
 3. minimize, 压缩代码. minimizer: [new TerserPlugin()],使用哪个压缩
 
@@ -32,5 +32,6 @@
 ### 构建流程图
 1. 初始化配置，webpack.config.js创建，配置入口，出口，loader,plugin，可以正常打包
 2. loader从下往上执行，每个loader返回的结果会被下一个loader接收,loader是用来处理解析文件。plugin面向整个构建生命周期工作。
-3. usedExports，mode, minimize, devtool的使用
+3. usedExports，mode, minimize, devtool,sideEffects的使用
 4. splitChunks 分包策略，把公用的包单独打包，减少重复打包，减少包体积。chunks:  async,inital,all。cacheGroups的分组配置。minChunk---指定一个模块被多少个入口（或 chunk）引用时才抽出来。 priority:等级越高就先执行哪个
+5. moduleIds: 'deterministic'、runtimeChunk: 'single' 每次打包的时候只打包变化的代码

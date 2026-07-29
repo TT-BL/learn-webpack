@@ -82,15 +82,16 @@ module.exports = {
         new CssMinimizerPlugin()
       ],
       splitChunks: {  //打包时那些单独生成一个js。大多是共用的文件
-        chunks: 'all',
+        chunks: 'initial',
+        maxSize: 200000,
         cacheGroups: {
           vendors: {
             test: /[\\/]node_modules[\\/]/,
             priority: 10,
           },
           commons: {
-            minChunks: 2,
-            priority: 5
+            minChunks: 1,
+            priority: 11
           }
         }
       } 
