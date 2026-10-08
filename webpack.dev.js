@@ -9,4 +9,10 @@ module.exports = merge(commonConfig, {
   optimization: {
     minimize: false,
   },
+
+  devServer: {
+    port: 9000,
+    open: true,
+    hot: true,
+  },
 })

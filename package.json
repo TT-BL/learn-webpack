@@ -4,6 +4,7 @@
     "*.css"
   ],
   "scripts": {
+    "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
     "compare": "node scripts/compare-state.js"
@@ -21,6 +22,7 @@
     "webpack": "^5.108.4",
     "webpack-bundle-analyzer": "^5.3.1",
     "webpack-cli": "^7.2.1",
+    "webpack-dev-server": "^6.0.0",
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {

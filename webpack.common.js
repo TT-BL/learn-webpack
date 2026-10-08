@@ -6,12 +6,12 @@ const BuildProgressPlugin = require('./plugins/build-process-plugin.js')
 module.exports = {
   entry: {
     main: './src/index.js',
-    admin: './src/admin.js',
+    // admin: './src/admin.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: '[name]-[contenthash:8].js',
+    filename: '[name].js',
   },
 
   cache: {

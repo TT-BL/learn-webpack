@@ -35,3 +35,11 @@
 3. usedExports，mode, minimize, devtool,sideEffects的使用
 4. splitChunks 分包策略，把公用的包单独打包，减少重复打包，减少包体积。chunks:  async,inital,all。cacheGroups的分组配置。minChunk---指定一个模块被多少个入口（或 chunk）引用时才抽出来。 priority:等级越高就先执行哪个
 5. moduleIds: 'deterministic'、runtimeChunk: 'single' 每次打包的时候只打包变化的代码
+
+
+### webpack-dev-serve安装
+1. 可以启动项目了，之前都是打包后生成html查看的
+2. 可以设置hot,open,port，proxy
+3. hot: true后修改css可以自动更新,改为单入口文件可行，多入口文件不行
+4. HMR是什么,热更新
+
