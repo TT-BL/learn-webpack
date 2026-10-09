@@ -48,4 +48,7 @@
 2. 了解 useEffect，useMemo之间的不同。useMemo相当于vue的计算属性，可以记忆化。适用于数据量就大的数据
 3. 了解react里class组件和函数组件的不同
 
+4. 列表渲染，直接绑定deleteUser(id)，列表渲染不出来，因为直接调用了，直接把数据都删除了，应该使用()=>{}方法
+5. useState的使用
+
 
