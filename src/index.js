@@ -16,13 +16,18 @@ import { createRoot } from 'react-dom/client'
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard.jsx'))
 const Settings = React.lazy(() => import('./pages/Setting.jsx'))
+import PageSwitcher from './components/PageSwitcher.jsx'
 
 function App() {
-  const [page, setPage] = React.useState('dashboard')
+  const [page, setPage] = React.useState('Dashboard')
+  const receiveData = (data) => {
+    console.log(data,111);
+    setPage(data);
+  }
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
-      { page === 'dashboard' ? <Dashboard /> : <Settings />}
-      <button onClick={()=>setPage('settings')}>切到Settings</button>
+      { page === 'Dashboard' ? <Dashboard /> : <Settings />}
+      <PageSwitcher componentsName={['Dashboard', 'Settings']} onPageChange={receiveData} />
     </React.Suspense>
   )
 }

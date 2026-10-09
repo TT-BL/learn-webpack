@@ -43,3 +43,9 @@
 3. hot: true后修改css可以自动更新,改为单入口文件可行，多入口文件不行
 4. HMR是什么,热更新
 
+### react学习
+1. props父子传递
+2. 了解 useEffect，useMemo之间的不同。useMemo相当于vue的计算属性，可以记忆化。适用于数据量就大的数据
+3. 了解react里class组件和函数组件的不同
+
+
